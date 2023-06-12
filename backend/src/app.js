@@ -4,18 +4,36 @@ const cors = require('cors');
 const app = express()
 
 const Recipe = require('./models/Recipe.js');
+const { getAllRecipes } = require('./controllers/recipes.js');
 
 app.use(cors());
 
-app.get('/', async (req, res) => {
-  const recipe = new Recipe({ "name": "Лазанья"});
+app.get('/', getAllRecipes);
 
-  await recipe.save();
-  const recipes = await Recipe.find();
+app.post('/create-recipe', async (req, res) => {
+  try {
+    console.log('body', req.body);
+    const recipe = new Recipe({"name": "Паста Болоньезе"});
+    await recipe.save();
+    
+    res.json({"created": recipe});
 
-  console.log(recipes)
+  } catch (err) {
+    console.log('err', err);
 
-  res.json({ "message": 'Hello World!'});
+  }
+
+});
+
+app.delete('/delete-all', async (req, res) => {
+  try {
+    const result = await Recipe.deleteMany({});
+    
+    res.json(result);
+  } catch (err) {
+    console.log('err', err);
+  }
+
 });
 
 module.exports = app;
