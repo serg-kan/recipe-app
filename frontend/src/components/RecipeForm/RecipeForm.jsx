@@ -7,8 +7,7 @@ import Row from 'react-bootstrap/Row';
 
 import { getAllRecipes } from '../../api/RecipeApi';
 
-const RecipeForm = () => {
-  const [recipes, setRecipes] = useState({});
+const RecipeForm = ({ addRecipe }) => {
   const [recipeName, setRecipeName] = useState('');
 
   useEffect(() => {
@@ -18,6 +17,15 @@ const RecipeForm = () => {
 
   const onSubmit = (e) => { 
     e.preventDefault();
+
+    addRecipe({
+      name: recipeName,
+      ingredients: [],
+      fats: 0,
+      carbs: 10,
+      proteins: 10,
+    });
+
     setRecipeName('');
   }
 

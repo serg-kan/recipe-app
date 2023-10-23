@@ -7,13 +7,14 @@ import Badge from 'react-bootstrap/Badge';
 const RecipeCard = ({ name, description, ingredients }) => {
   return (
     <Row >
-        <Card className="mx-auto">
+        <Card className="mx-auto m-1">
           <Card.Body>
-            <Card.Title>Курица в кисло-сладком соусе</Card.Title>
-            <Badge className="me-2">Курица</Badge>
-            <Badge className="me-2">Рис</Badge>
-            <Badge className="me-2">Овощи</Badge>
-            <Badge className="me-2">Зелень</Badge>
+            <Card.Title>{name}</Card.Title>
+            {
+              ingredients.map((ingredient) => (
+                <Badge className="me-2">{ingredient}</Badge>
+              ))
+            }
           </Card.Body>
         </Card>       
     </Row>
