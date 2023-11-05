@@ -1,6 +1,7 @@
 import RecipeCard from "@/components/recipe-card";
 import MealDiary from "@/components/meal-diary";
 import {SidebarNav} from '@/components/sidebar';
+import {Separator} from '@/components/ui/separator'
 
 const sidebarNavItems = [
   {
@@ -19,24 +20,26 @@ const sidebarNavItems = [
 
 export default function Home() {
   return (
-    <div className="flex flex-row space-x-3 mx-auto pt-10">
-      <div className="basis-1/5">
-        <SidebarNav items={sidebarNavItems} />
-      </div>
-      <div className="basis-4/5 pr-10">
-        <div className="grid grid-cols-2 gap-2">
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
-          <RecipeCard />
+    <div className="container">
+        <div className="space-y-0.5 pt-5">
+          <h2 className="text-2xl font-bold tracking-tight">Your menu</h2>
+          <p className="text-muted-foreground">
+            Choose what to eat today, count calories, stay in shape
+          </p>
+        </div>
+        <Separator className="my-6" />
+        <div className="flex flex-row space-x-3 mx-auto">
+          <div className="basis-1/5">
+            <SidebarNav items={sidebarNavItems} />
+          </div>
+          <div className="basis-4/5 grid grid-cols-2 gap-4">
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+          </div>
         </div>
       </div>
-      {/* <div className="basis-2/5">
-        <div className="flex flex-col space-y-4">
-          <MealDiary />
-        </div>
-      </div> */}
-    </div>
   )
 }
