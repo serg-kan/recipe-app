@@ -1,3 +1,5 @@
+'use client'
+
 import * as React from "react"
 
 import {
@@ -44,22 +46,17 @@ import { Switch } from "@/components/ui/switch"
 export default function RecipeCard() {
   return (
     <Card className="flex flex-col">
-      {/* <Image
-            src={Pic}
-            height={150}
-            alt="Picture of the author"
-          /> */}
-      <div>
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle>Syrniki</CardTitle>
           <CardDescription>
-            <Badge variant="outline" className="m-1">Breakfast</Badge>
-            <Badge variant="outline" className="m-1">30 min</Badge>
+            <Button>Hello</Button>
+
+            {/* <Badge variant="outline" className="m-1">30 min</Badge> */}
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          
-          <Collapsible className="w-[350px] space-y-2">
+        
+        <CardContent>  
+          {/* <Collapsible className="w-[350px] space-y-2">
             <div className="flex items-center space-x-2">
               <h4 className="text-sm font-semibold">
                 Ingredients
@@ -79,27 +76,28 @@ export default function RecipeCard() {
                 Flour: 500g
               </div>
             </CollapsibleContent>
-          </Collapsible>
+          </Collapsible> */}
 
         </CardContent>
         <CardFooter>
-        <div className="flex space-x-4 text-sm text-muted-foreground">
-            <div className="flex items-center">
-              <CircleIcon className="mr-1 h-3 w-3" />
-              Carbs: 10
-            </div>
-            <div className="flex items-center">
-              <StarIcon className="mr-1 h-3 w-3" />
-              Proteins: 30
-            </div>
-            <div className="flex items-center">
-              <ComponentInstanceIcon className="mr-1 h-3 w-3" />
-              Fats: 5
-            </div>
-          </div>  
-        </CardFooter>
-      </div>
-      
+          <div className="flex flex-col space-y-2">
+            <div className="flex space-x-4 text-sm text-muted-foreground">
+              <div className="flex items-center">
+                <CircleIcon className="mr-1 h-3 w-3" />
+                Carbs: 10
+              </div>
+              <div className="flex items-center">
+                <StarIcon className="mr-1 h-3 w-3" />
+                Proteins: 30
+              </div>
+              <div className="flex items-center">
+                <ComponentInstanceIcon className="mr-1 h-3 w-3" />
+                Fats: 5
+              </div>
+            </div> 
+          </div>
+  
+        </CardFooter>      
     </Card>
   )
 }

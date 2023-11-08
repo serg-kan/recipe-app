@@ -1,3 +1,7 @@
+'use client'
+
+import { useState, useEffect } from 'react';
+
 import RecipeCard from "@/components/recipe-card";
 import MealDiary from "@/components/meal-diary";
 import {SidebarNav} from '@/components/sidebar';
@@ -14,11 +18,24 @@ const sidebarNavItems = [
   },
   {
     title: "Diet",
-    href: "#",
+    href: "##",
   }
 ]
 
 export default function Home() {
+
+  const [recipes, setRecipes] = useState({});
+
+  useEffect(() => {
+    fetch("http://localhost:3001/").then(
+      response => response.json()
+    ).then(
+      data => {
+        console.log('data', data);
+      }
+    )
+  }, []);
+
   return (
     <div className="container">
         <div className="space-y-0.5 pt-5">
@@ -34,10 +51,10 @@ export default function Home() {
           </div>
           <div className="basis-4/5 grid grid-cols-2 gap-4">
               <RecipeCard />
+              {/* <RecipeCard />
               <RecipeCard />
               <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
+              <RecipeCard /> */}
           </div>
         </div>
       </div>

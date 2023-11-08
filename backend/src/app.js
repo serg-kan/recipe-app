@@ -20,9 +20,7 @@ app.post('/create-recipe', async (req, res) => {
 
   } catch (err) {
     console.log('err', err);
-
   }
-
 });
 
 app.delete('/delete-all', async (req, res) => {
