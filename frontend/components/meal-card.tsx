@@ -10,6 +10,16 @@ import {
   ComponentInstanceIcon
 } from "@radix-ui/react-icons"
 import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
@@ -42,19 +52,24 @@ import {
 } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 
+interface MealProps {
+  name: string
+}
 
-export default function RecipeCard() {
+const recipes = [
+  {
+    name: "Яичница",
+    totalAmount: "1",
+  },
+
+]
+
+export default function MealCard({ name }: MealProps) {
   return (
     <Card className="flex flex-col">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Syrniki</CardTitle>
+          <CardTitle>{name}</CardTitle>
           <CardDescription>
-          </CardDescription>
-        </CardHeader>
-        
-        <CardContent>  
-        </CardContent>
-        <CardFooter>
           <div className="flex flex-col space-y-2">
             <div className="flex space-x-4 text-sm text-muted-foreground">
               <div className="flex items-center">
@@ -71,6 +86,30 @@ export default function RecipeCard() {
               </div>
             </div> 
           </div>
+          </CardDescription>
+        </CardHeader>
+        
+        <CardContent>  
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">Meal</TableHead>
+                <TableHead className="text-right">Eaten</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {recipes.map((recipe) => (
+                <TableRow className="h-8" key={recipe.name}>
+                  <TableCell className="font-medium">{recipe.name}</TableCell>
+                  <TableCell className="text-right">{recipe.totalAmount}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+        <CardFooter>
+          <Button>Add new</Button>
+          
   
         </CardFooter>      
     </Card>
